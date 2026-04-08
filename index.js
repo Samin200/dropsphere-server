@@ -395,7 +395,6 @@ app.get(
   ],
   validate,
   async (req, res) => {
-    console.log("[TRACE] /api/products query:", req.query);
     const page = Number(req.query.page) || 1;
     const limit = Number(req.query.limit) || 12;
     const sort = String(req.query.sort || "newest");
@@ -930,7 +929,6 @@ if (process.env.VERCEL) {
   await ensureDB();
 } else {
   ensureDB().finally(() => {
-    console.log("[TRACE] Starting local API server...");
     app.listen(PORT, () => {
       console.log(`DropSphere API running on port ${PORT}`);
     });
